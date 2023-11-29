@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: jetmessage
+  output:
+    ansi:
+      enabled: never
+  main:
+    banner-mode: log
+  task:
+    scheduling:
+      shutdown:
+        await-termination: true
+        await-termination-period: 3s
+
+static-config:
+  maxLockedFileCount: 10
+  messageFileServiceThreadCount: 200
+  maxDiskUsedRatio: 0.7
