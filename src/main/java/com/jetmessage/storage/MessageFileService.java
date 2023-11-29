@@ -38,7 +38,7 @@ public class MessageFileService {
     @Resource
     private StaticConfig config;
     @Resource
-    private TopicManager topicManager;
+    private TopicInfoService topicInfoService;
 
     private volatile boolean stopped;
     private final ConcurrentSkipListMap<Long, MessageFile> messageFileMap = new ConcurrentSkipListMap<>();
@@ -124,7 +124,7 @@ public class MessageFileService {
     }
 
     public synchronized void writeMessage(String topic) {
-        Optional<TopicInfo> topicInfoOptional = topicManager.topicInfo(topic);
+        Optional<TopicInfo> topicInfoOptional = topicInfoService.topicInfo(topic);
         if (!topicInfoOptional.isPresent()) {
             return;
         }
